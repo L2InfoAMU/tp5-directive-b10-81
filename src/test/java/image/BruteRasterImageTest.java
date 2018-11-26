@@ -17,7 +17,7 @@ class BruteRasterImageTest {
 
   private static Color[][] goldMatrix, blueMatrix;
 
-  private Image goldImage, blueImage;
+  private BruteRasterImage goldImage, blueImage;
 
   @BeforeAll
   static void init () {
@@ -44,6 +44,7 @@ class BruteRasterImageTest {
     assertThrows(RuntimeException.class, () -> new BruteRasterImage(zeroDimensionMatrix));
     assertThrows(RuntimeException.class, () -> new BruteRasterImage(nullFilledMatrix));
     assertThrows(RuntimeException.class, () -> new BruteRasterImage(null, width, height));
+    assertThrows(RuntimeException.class, () -> new BruteRasterImage(Color.GRAY, -1, -2));
     assertNotNull(new BruteRasterImage(goldMatrix));
     assertNotNull(new BruteRasterImage(Color.GOLD, width, height));
   }
@@ -52,8 +53,8 @@ class BruteRasterImageTest {
   void getPixelColor () {
     for (int row = 0; row < height; row++) {
       for (int col = 0; col < width; col++) {
-        assertEquals(Color.GOLD, goldImage.getPixelColor(row, col));
-        assertEquals(Color.BLUEVIOLET, blueImage.getPixelColor(row, col));
+        assertEquals(Color.GOLD, goldImage.getPixelColor(col, row));
+        assertEquals(Color.BLUEVIOLET, blueImage.getPixelColor(col, row));
       }
     }
   }
@@ -66,5 +67,55 @@ class BruteRasterImageTest {
   @Test
   void getHeight () {
     assertEquals(height, goldImage.getHeight());
+  }
+
+  @Test
+  void setPixelColor () {
+    for (int row = 0; row < height; row++) {
+      for (int col = 0; col < width; col++) {
+        goldImage.setPixelColor(blueImage.getPixelColor(col, row), col, row);
+        blueImage.setPixelColor(Color.RED, col, row);
+        assertEquals(Color.BLUEVIOLET, goldImage.getPixelColor(col, row));
+        assertEquals(Color.RED, blueImage.getPixelColor(col, row));
+      }
+    }
+  }
+
+  @Test
+  void setPixelsColorFromColorMatrix () {
+    assertThrows(RuntimeException.class, () -> goldImage.setPixelsColor(zeroDimensionMatrix));
+    assertThrows(RuntimeException.class, () -> goldImage.setPixelsColor(nullFilledMatrix));
+    goldImage.setPixelsColor(blueMatrix);
+    blueImage.setPixelsColor(goldMatrix);
+    for (int row = 0; row < height; row++) {
+      for (int col = 0; col < width; col++) {
+        assertEquals(Color.BLUEVIOLET, goldImage.getPixelColor(col, row));
+        assertEquals(Color.GOLD, blueImage.getPixelColor(col, row));
+      }
+    }
+  }
+
+  @Test
+  void setPixelsColorWithColor () {
+    goldImage.setPixelsColor(Color.BLACK);
+    blueImage.setPixelsColor(Color.WHITE);
+    for (int row = 0; row < height; row++) {
+      for (int col = 0; col < width; col++) {
+        assertEquals(Color.BLACK, goldImage.getPixelColor(col, row));
+        assertEquals(Color.WHITE, blueImage.getPixelColor(col, row));
+      }
+    }
+  }
+
+  @Test
+  void setWidth () {
+    blueImage.setWidth(height);
+    assertEquals(height, blueImage.getWidth());
+  }
+
+  @Test
+  void setHeight () {
+    blueImage.setHeight(width);
+    assertEquals(width, blueImage.getHeight());
   }
 }

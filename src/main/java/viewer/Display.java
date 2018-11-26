@@ -1,9 +1,13 @@
 package viewer;
 
 import image.Image;
+import image.RasterImageType;
 import image.ImageFactory;
+import image.RasterUniformImageFactory;
+import image.RasterFlagFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.paint.Color;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.PixelWriter;
@@ -26,7 +30,8 @@ public class Display implements Initializable {
   @Override
   public void initialize (URL location, ResourceBundle resources) {
 
-    // TODO : rajouter la création d'une fabrique d'image pour initialiser imageFactory
+    //imageFactory = new RasterUniformImageFactory(200, 200, Color.RED, RasterImageType.BRUTE);
+    imageFactory = new RasterFlagFactory(900, 600, Color.BLACK, Color.WHITE, Color.RED, RasterImageType.BRUTE);
 
     this.image = imageFactory.makeImage();
 
@@ -43,9 +48,9 @@ public class Display implements Initializable {
     GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
     PixelWriter pixelWriter = graphicsContext.getPixelWriter();
 
-    for (int i = 0; i < pixelWidth; i++) {
-      for (int j = 0; j < pixelHeight; j++) {
-        renderPixel(i, j, pixelWriter);
+    for (int i = 0; i < pixelHeight; i++) {
+      for (int j = 0; j < pixelWidth; j++) {
+        renderPixel(j, i, pixelWriter);
       }
     }
   }

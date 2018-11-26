@@ -9,7 +9,14 @@ public interface Image {
 
   Color getPixelColor (int x, int y);
 
+  void setPixelColor (Color color, int x, int y);
+
+  void setPixelsColor (Color[][] pixels);
+
+  void setPixelsColor (Color color);
+
   int getWidth ();
 
   int getHeight ();
+
 }
