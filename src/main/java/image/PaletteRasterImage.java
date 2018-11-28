@@ -45,8 +45,7 @@ public class PaletteRasterImage implements Image {
     indexesOfColors[y][x] = (byte) index;
   }
 
-  @Override
-  public void setPixelsColor (Color[][] pixels) {
+  private void setPixelsColor (Color[][] pixels) {
     Matrices.requiresNonNull(pixels);
     Matrices.requiresNonZeroDimensions(pixels);
     Matrices.requiresRectangularMatrix(pixels);
@@ -63,8 +62,7 @@ public class PaletteRasterImage implements Image {
     }
   }
 
-  @Override
-  public void setPixelsColor (Color color) {
+  private void setPixelsColor (Color color) {
     palette.clear();
     palette.add(color);
 

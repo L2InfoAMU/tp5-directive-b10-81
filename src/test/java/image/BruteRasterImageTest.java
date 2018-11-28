@@ -81,31 +81,31 @@ class BruteRasterImageTest {
     }
   }
 
-  @Test
-  void setPixelsColorWithColorMatrix () {
-    assertThrows(RuntimeException.class, () -> goldImage.setPixelsColor(zeroDimensionMatrix));
-    assertThrows(RuntimeException.class, () -> goldImage.setPixelsColor(nullFilledMatrix));
-    goldImage.setPixelsColor(blueMatrix);
-    blueImage.setPixelsColor(goldMatrix);
-    for (int row = 0; row < height; row++) {
-      for (int col = 0; col < width; col++) {
-        assertEquals(Color.BLUEVIOLET, goldImage.getPixelColor(col, row));
-        assertEquals(Color.GOLD, blueImage.getPixelColor(col, row));
-      }
-    }
-  }
-
-  @Test
-  void setPixelsColorWithColor () {
-    goldImage.setPixelsColor(Color.BLACK);
-    blueImage.setPixelsColor(Color.WHITE);
-    for (int row = 0; row < height; row++) {
-      for (int col = 0; col < width; col++) {
-        assertEquals(Color.BLACK, goldImage.getPixelColor(col, row));
-        assertEquals(Color.WHITE, blueImage.getPixelColor(col, row));
-      }
-    }
-  }
+//  @Test
+//  void setPixelsColorWithColorMatrix () {
+//    assertThrows(RuntimeException.class, () -> goldImage.setPixelsColor(zeroDimensionMatrix));
+//    assertThrows(RuntimeException.class, () -> goldImage.setPixelsColor(nullFilledMatrix));
+//    goldImage.setPixelsColor(blueMatrix);
+//    blueImage.setPixelsColor(goldMatrix);
+//    for (int row = 0; row < height; row++) {
+//      for (int col = 0; col < width; col++) {
+//        assertEquals(Color.BLUEVIOLET, goldImage.getPixelColor(col, row));
+//        assertEquals(Color.GOLD, blueImage.getPixelColor(col, row));
+//      }
+//    }
+//  }
+//
+//  @Test
+//  void setPixelsColorWithColor () {
+//    goldImage.setPixelsColor(Color.BLACK);
+//    blueImage.setPixelsColor(Color.WHITE);
+//    for (int row = 0; row < height; row++) {
+//      for (int col = 0; col < width; col++) {
+//        assertEquals(Color.BLACK, goldImage.getPixelColor(col, row));
+//        assertEquals(Color.WHITE, blueImage.getPixelColor(col, row));
+//      }
+//    }
+//  }
 
   @Test
   void setWidth () {
