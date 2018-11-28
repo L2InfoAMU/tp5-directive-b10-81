@@ -23,6 +23,10 @@ class BruteRasterImageTest {
   static void init () {
     zeroDimensionMatrix = new Color[0][0];
     nullFilledMatrix = new Color[height][width];
+  }
+
+  @BeforeEach
+  void setUp () {
     goldMatrix = new Color[height][width];
     blueMatrix = new Color[height][width];
     for (int row = 0; row < height; row++) {
@@ -31,10 +35,6 @@ class BruteRasterImageTest {
         blueMatrix[row][col] = Color.BLUEVIOLET;
       }
     }
-  }
-
-  @BeforeEach
-  void setUp () {
     goldImage = new BruteRasterImage(goldMatrix);
     blueImage = new BruteRasterImage(blueMatrix);
   }
@@ -82,7 +82,7 @@ class BruteRasterImageTest {
   }
 
   @Test
-  void setPixelsColorFromColorMatrix () {
+  void setPixelsColorWithColorMatrix () {
     assertThrows(RuntimeException.class, () -> goldImage.setPixelsColor(zeroDimensionMatrix));
     assertThrows(RuntimeException.class, () -> goldImage.setPixelsColor(nullFilledMatrix));
     goldImage.setPixelsColor(blueMatrix);
