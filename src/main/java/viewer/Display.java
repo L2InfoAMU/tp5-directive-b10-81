@@ -1,10 +1,6 @@
 package viewer;
 
-import image.Image;
-import image.RasterImageType;
-import image.ImageFactory;
-import image.RasterUniformImageFactory;
-import image.RasterFlagFactory;
+import image.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.paint.Color;
@@ -35,7 +31,8 @@ public class Display implements Initializable {
     //imageFactory = new RasterUniformImageFactory(200, 200, Color.RED, RasterImageType.PALETTE);
     //imageFactory = new RasterFlagFactory(900, 600, Color.BLACK, Color.WHITE, Color.RED, RasterImageType.BRUTE);
     //imageFactory = new RasterUniformImageFactory(200, 200, Color.RED, RasterImageType.SPARSE);
-    imageFactory = new RasterFlagFactory(900, 600, Color.BLACK, Color.WHITE, Color.RED, RasterImageType.SPARSE);
+    //imageFactory = new RasterFlagFactory(900, 600, Color.BLACK, Color.WHITE, Color.RED, RasterImageType.SPARSE);
+    imageFactory = new LogoLISFactory();
 
     this.image = imageFactory.makeImage();
 
