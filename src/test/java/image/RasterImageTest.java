@@ -15,9 +15,11 @@ class RasterImageTest {
 
   private static Color[][] nullFilledMatrix;
 
-  private static Color[][] goldMatrix, blueMatrix;
+  private static Color[][] goldMatrix, blueMatrix, blackmatrix;
 
   private BruteRasterImage goldImage, blueImage;
+
+  private PaletteRasterImage blackImage;
 
   @BeforeAll
   static void init () {
@@ -29,14 +31,17 @@ class RasterImageTest {
   void setUp () {
     goldMatrix = new Color[height][width];
     blueMatrix = new Color[height][width];
+    blackmatrix = new Color[height][width];
     for (int row = 0; row < height; row++) {
       for(int col = 0; col < width; col++) {
         goldMatrix[row][col] = Color.GOLD;
         blueMatrix[row][col] = Color.BLUEVIOLET;
+        blackmatrix[row][col] = Color.BLACK;
       }
     }
     goldImage = new BruteRasterImage(goldMatrix);
     blueImage = new BruteRasterImage(blueMatrix);
+    blackImage = new PaletteRasterImage(blackmatrix);
   }
 
   @Test
@@ -55,6 +60,7 @@ class RasterImageTest {
       for (int col = 0; col < width; col++) {
         assertEquals(Color.GOLD, goldImage.getPixelColor(col, row));
         assertEquals(Color.BLUEVIOLET, blueImage.getPixelColor(col, row));
+        assertEquals(Color.BLACK, blackImage.getPixelColor(col, row));
       }
     }
   }
@@ -75,8 +81,10 @@ class RasterImageTest {
       for (int col = 0; col < width; col++) {
         goldImage.setPixelColor(blueImage.getPixelColor(col, row), col, row);
         blueImage.setPixelColor(Color.RED, col, row);
+        blackImage.setPixelColor(Color.YELLOWGREEN, col, row);
         assertEquals(Color.BLUEVIOLET, goldImage.getPixelColor(col, row));
         assertEquals(Color.RED, blueImage.getPixelColor(col, row));
+        assertEquals(Color.YELLOWGREEN, blackImage.getPixelColor(col, row));
       }
     }
   }
