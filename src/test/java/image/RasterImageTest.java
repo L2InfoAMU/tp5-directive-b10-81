@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BruteRasterImageTest {
+class RasterImageTest {
 
   private static int width = 500, height = 800;
 

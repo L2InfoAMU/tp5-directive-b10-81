@@ -8,6 +8,7 @@ public abstract class RasterImage implements Image {
   protected int width, height;
 
   public RasterImage (Color color, int width, int height) {
+    if (color == null) throw new NullPointerException();
     this.height = height;
     this.width = width;
     createRepresentation();
