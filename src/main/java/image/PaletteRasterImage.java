@@ -6,25 +6,22 @@ import util.Matrices;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaletteRasterImage implements Image {
+public class PaletteRasterImage extends RasterImage {
 
   private List<Color> palette;
 
   private byte[][] indexesOfColors;
 
-  private int width, height;
 
   public PaletteRasterImage (Color color, int width, int height) {
-    this.height = height;
-    this.width = width;
-    createRepresentation();
-    setPixelsColor(color);
+    super(color, width, height);
   }
 
   public PaletteRasterImage (Color[][] pixels) {
-    setPixelsColor(pixels);
+    super(pixels);
   }
 
+  @Override
   public void createRepresentation () {
     palette = new ArrayList<>();
     indexesOfColors = new byte[height][width];
@@ -45,24 +42,8 @@ public class PaletteRasterImage implements Image {
     indexesOfColors[y][x] = (byte) index;
   }
 
-  private void setPixelsColor (Color[][] pixels) {
-    Matrices.requiresNonNull(pixels);
-    Matrices.requiresNonZeroDimensions(pixels);
-    Matrices.requiresRectangularMatrix(pixels);
-
-    this.height = Matrices.getRowCount(pixels);
-    this.width = Matrices.getColumnCount(pixels);
-
-    createRepresentation();
-
-    for (int row = 0; row < height; row++) {
-      for (int col = 0; col < width; col++) {
-        setPixelColor(pixels[row][col], col, row);
-      }
-    }
-  }
-
-  private void setPixelsColor (Color color) {
+  @Override
+  protected void setPixelsColor (Color color) {
     palette.clear();
     palette.add(color);
 
@@ -71,23 +52,5 @@ public class PaletteRasterImage implements Image {
         indexesOfColors[row][col] = 0;
       }
     }
-  }
-
-  @Override
-  public int getWidth () {
-    return width;
-  }
-
-  @Override
-  public int getHeight () {
-    return height;
-  }
-
-  protected void setWidth (int width) {
-    this.width = width;
-  }
-
-  protected void setHeight (int height) {
-    this.height = height;
   }
 }
