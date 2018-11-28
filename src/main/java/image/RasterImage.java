@@ -34,7 +34,13 @@ public abstract class RasterImage implements Image {
   @Override
   public abstract void  setPixelColor (Color color, int x, int y);
 
-  protected abstract void setPixelsColor (Color color);
+  protected void setPixelsColor (Color color) {
+    for (int row = 0; row < height; row++) {
+      for (int col = 0; col < width; col++) {
+        setPixelColor(color, col, row);
+      }
+    }
+  }
 
   private void setPixelsColor (Color[][] pixels) {
     for (int row = 0; row < height; row++) {
