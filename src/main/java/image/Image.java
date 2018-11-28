@@ -9,8 +9,6 @@ public interface Image {
 
   Color getPixelColor (int x, int y);
 
-  void setPixelColor (Color color, int x, int y);
-
   int getWidth ();
 
   int getHeight ();

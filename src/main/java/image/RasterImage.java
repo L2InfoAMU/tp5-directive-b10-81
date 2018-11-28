@@ -31,7 +31,6 @@ public abstract class RasterImage implements Image {
   @Override
   public abstract Color getPixelColor (int x, int y);
 
-  @Override
   public abstract void  setPixelColor (Color color, int x, int y);
 
   protected void setPixelsColor (Color color) {
