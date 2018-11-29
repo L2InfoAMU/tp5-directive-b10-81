@@ -30,7 +30,7 @@ public class SparseRasterImage extends RasterImage {
   @Override
   public void setPixelColor(Color color, int x, int y) {
     Point point = new Point(x, y);
-    if (color == Color.WHITE) {
+    if (color.equals(Color.WHITE)) {
       pixelsMap.remove(point);
       return;
     }
@@ -40,7 +40,7 @@ public class SparseRasterImage extends RasterImage {
   @Override
   protected void setPixelsColor (Color color) {
     pixelsMap.clear();
-    if (color == Color.WHITE)
+    if (color.equals(Color.WHITE))
       return;
 
     super.setPixelsColor(color);
