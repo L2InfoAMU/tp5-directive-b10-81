@@ -9,7 +9,7 @@ public class Point {
 
   public final int x, y;
 
-  Point (int x, int y) {
+  public Point (int x, int y) {
     this.x = x;
     this.y = y;
   }
@@ -28,5 +28,8 @@ public class Point {
     return Objects.hash(x, y);
   }
 
+  public final double distanceTo (Point p) {
+    return Math.hypot(x - p.x, y - p.y);
+  }
 
 }
