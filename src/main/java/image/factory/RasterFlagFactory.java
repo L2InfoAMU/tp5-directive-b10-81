@@ -1,5 +1,9 @@
-package image;
+package image.factory;
 
+import image.Image;
+import image.BruteRasterImage;
+import image.PaletteRasterImage;
+import image.SparseRasterImage;
 import javafx.scene.paint.Color;
 
 public class RasterFlagFactory implements ImageFactory {

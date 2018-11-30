@@ -1,4 +1,4 @@
-package image;
+package image.factory;
 
 class NotSupportedException extends RuntimeException {
 

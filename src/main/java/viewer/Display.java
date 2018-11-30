@@ -1,9 +1,10 @@
 package viewer;
 
-import image.*;
+import image.Image;
+import image.factory.ImageFactory;
+import image.factory.LogoLISFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.paint.Color;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.PixelWriter;

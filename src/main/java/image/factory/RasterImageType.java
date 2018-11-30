@@ -1,4 +1,4 @@
-package image;
+package image.factory;
 
 public enum RasterImageType {
   BRUTE,

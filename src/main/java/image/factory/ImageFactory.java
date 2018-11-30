@@ -1,4 +1,6 @@
-package image;
+package image.factory;
+
+import image.Image;
 
 /**
  * Created by Arnaud Labourel on 23/11/2018.

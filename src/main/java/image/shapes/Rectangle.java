@@ -1,5 +1,6 @@
-package image;
+package image.shapes;
 
+import image.Point;
 import javafx.scene.paint.Color;
 
 public class Rectangle implements Shape {
@@ -8,7 +9,7 @@ public class Rectangle implements Shape {
 
   private Color color;
 
-  Rectangle (int x, int y, int width, int height, Color color) {
+  public Rectangle (int x, int y, int width, int height, Color color) {
     this.x = x;
     this.y = y;
     this.width = width;

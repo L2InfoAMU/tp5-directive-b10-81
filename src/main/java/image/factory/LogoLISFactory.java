@@ -1,5 +1,9 @@
-package image;
+package image.factory;
 
+import image.Image;
+import image.VectorImage;
+import image.shapes.Rectangle;
+import image.shapes.Shape;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
