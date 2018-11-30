@@ -3,17 +3,14 @@ package image;
 import javafx.scene.paint.Color;
 import util.Matrices;
 
-/**
- *
- */
 public abstract class RasterImage extends BaseImage {
 
   /**
-   * Constructs a monochromatic image
+   * Constructs a monochromatic image.
    *
-   * @param color
-   * @param width
-   * @param height
+   * @param color the color of the image
+   * @param width the width of the image
+   * @param height the height of the image
    */
   public RasterImage (Color color, int width, int height) {
     if (color == null) throw new NullPointerException();
@@ -24,8 +21,9 @@ public abstract class RasterImage extends BaseImage {
   }
 
   /**
+   *  Constructs a color image with a given color matrix.
    *
-   * @param colors
+   * @param colors the color matrix
    */
   public RasterImage (Color[][] colors) {
     Matrices.requiresNonNull(colors);
@@ -39,21 +37,24 @@ public abstract class RasterImage extends BaseImage {
   }
 
   /**
-   *
+   * A class that extends RasterImage must create its internal
+   * data structure from this method.
    */
   public abstract void createRepresentation ();
 
   /**
+   *  Change the color of a pixel.
    *
-   * @param color
-   * @param x
-   * @param y
+   * @param color the new color of the pixel
+   * @param x the x coordinate of the pixel
+   * @param y the y coordinate of the pixel
    */
   public abstract void  setPixelColor (Color color, int x, int y);
 
   /**
+   * Change the color of each pixel of the image with the given color.
    *
-   * @param color
+   * @param color the new color of the image
    */
   protected void setPixelsColor (Color color) {
     for (int row = 0; row < height; row++) {
@@ -64,8 +65,9 @@ public abstract class RasterImage extends BaseImage {
   }
 
   /**
+   * Change the color of each pixel of the image with a given color matrix.
    *
-   * @param pixels
+   * @param pixels the color matrix
    */
   private void setPixelsColor (Color[][] pixels) {
     for (int row = 0; row < height; row++) {
@@ -76,9 +78,11 @@ public abstract class RasterImage extends BaseImage {
   }
 
   /**
+   *  Helper method.
+   *  Make a copy of a given color.
    *
-   * @param c
-   * @return
+   * @param c the color to copy
+   * @return the copy of the color
    */
   protected final Color colorCopy (Color c) {
     return new Color(c.getRed(), c.getGreen(), c.getBlue(), c.getOpacity());
