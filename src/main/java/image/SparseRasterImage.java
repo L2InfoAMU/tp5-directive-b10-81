@@ -34,7 +34,7 @@ public class SparseRasterImage extends RasterImage {
       pixelsMap.remove(point);
       return;
     }
-    if (pixelsMap.replace(point, color) == null) pixelsMap.put(point, color);
+    if (pixelsMap.replace(point, colorCopy(color)) == null) pixelsMap.put(point, colorCopy(color));
   }
 
   @Override

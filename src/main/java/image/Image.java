@@ -7,10 +7,18 @@ import javafx.scene.paint.Color;
  */
 public interface Image {
 
+  /**
+   *
+   * @param x
+   * @param y
+   * @return
+   */
   Color getPixelColor (int x, int y);
 
+  /**  */
   int getWidth ();
 
+  /**  */
   int getHeight ();
 
 }

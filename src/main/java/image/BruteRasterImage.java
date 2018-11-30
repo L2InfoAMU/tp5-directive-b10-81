@@ -26,15 +26,6 @@ public class BruteRasterImage extends RasterImage {
 
   @Override
   public void setPixelColor (Color color, int x, int y) {
-    pixels[y][x] = color;
+    pixels[y][x] = colorCopy(color);
   }
-
-//  @Override
-//  protected void setPixelsColor (Color color) {
-//    for (int row = 0; row < height; row++) {
-//      for (int col = 0; col < width; col++) {
-//        setPixelColor(color, col, row);
-//      }
-//    }
-//  }
 }

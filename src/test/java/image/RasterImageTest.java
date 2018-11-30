@@ -32,10 +32,7 @@ class RasterImageTest {
     blackmatrix = new Color[height][width];
     whiteMatrix = new Color[height][width];
     redMatrix = new Color[height][width];
-  }
 
-  @BeforeEach
-  void setUp () {
     for (int row = 0; row < height; row++) {
       for(int col = 0; col < width; col++) {
         goldMatrix[row][col] = Color.GOLD;
@@ -45,6 +42,10 @@ class RasterImageTest {
         redMatrix[row][col] = Color.RED;
       }
     }
+  }
+
+  @BeforeEach
+  void setUp () {
     goldImage = new BruteRasterImage(goldMatrix);
     blueImage = new BruteRasterImage(blueMatrix);
     blackImage = new PaletteRasterImage(blackmatrix);

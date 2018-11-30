@@ -5,11 +5,9 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VectorImage implements Image {
+public class VectorImage extends BaseImage {
 
   private List<Shape> shapes;
-
-  private int width, height;
 
   public VectorImage (List<Shape> shapes, int width, int height) {
     if (shapes.isEmpty() || width <= 0 || height <= 0) throw new IllegalArgumentException();
@@ -26,23 +24,5 @@ public class VectorImage implements Image {
     }
 
     return Color.WHITE;
-  }
-
-  @Override
-  public int getWidth () {
-    return width;
-  }
-
-  @Override
-  public int getHeight () {
-    return height;
-  }
-
-  protected void setWidth (int width) {
-    this.width = width;
-  }
-
-  protected void setHeight (int height) {
-    this.height = height;
   }
 }

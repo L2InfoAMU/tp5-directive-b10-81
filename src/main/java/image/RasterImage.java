@@ -3,10 +3,18 @@ package image;
 import javafx.scene.paint.Color;
 import util.Matrices;
 
-public abstract class RasterImage implements Image {
+/**
+ *
+ */
+public abstract class RasterImage extends BaseImage {
 
-  protected int width, height;
-
+  /**
+   * Constructs a monochromatic image
+   *
+   * @param color
+   * @param width
+   * @param height
+   */
   public RasterImage (Color color, int width, int height) {
     if (color == null) throw new NullPointerException();
     this.height = height;
@@ -15,6 +23,10 @@ public abstract class RasterImage implements Image {
     setPixelsColor(color);
   }
 
+  /**
+   *
+   * @param colors
+   */
   public RasterImage (Color[][] colors) {
     Matrices.requiresNonNull(colors);
     Matrices.requiresNonZeroDimensions(colors);
@@ -26,13 +38,23 @@ public abstract class RasterImage implements Image {
     setPixelsColor(colors);
   }
 
+  /**
+   *
+   */
   public abstract void createRepresentation ();
 
-  @Override
-  public abstract Color getPixelColor (int x, int y);
-
+  /**
+   *
+   * @param color
+   * @param x
+   * @param y
+   */
   public abstract void  setPixelColor (Color color, int x, int y);
 
+  /**
+   *
+   * @param color
+   */
   protected void setPixelsColor (Color color) {
     for (int row = 0; row < height; row++) {
       for (int col = 0; col < width; col++) {
@@ -41,6 +63,10 @@ public abstract class RasterImage implements Image {
     }
   }
 
+  /**
+   *
+   * @param pixels
+   */
   private void setPixelsColor (Color[][] pixels) {
     for (int row = 0; row < height; row++) {
       for (int col = 0; col < width; col++) {
@@ -49,21 +75,12 @@ public abstract class RasterImage implements Image {
     }
   }
 
-  @Override
-  public int getWidth () {
-    return width;
-  }
-
-  @Override
-  public int getHeight () {
-    return height;
-  }
-
-  protected void setWidth (int width) {
-    this.width = width;
-  }
-
-  protected void setHeight (int height) {
-    this.height = height;
+  /**
+   *
+   * @param c
+   * @return
+   */
+  protected final Color colorCopy (Color c) {
+    return new Color(c.getRed(), c.getGreen(), c.getBlue(), c.getOpacity());
   }
 }

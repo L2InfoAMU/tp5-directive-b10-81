@@ -1,7 +1,6 @@
 package image;
 
 import javafx.scene.paint.Color;
-import util.Matrices;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +35,7 @@ public class PaletteRasterImage extends RasterImage {
   public void setPixelColor (Color color, int x, int y) {
     int index = palette.indexOf(color);
     if (index == -1) {
-      palette.add(color);
+      palette.add(colorCopy(color));
       index = palette.size() -1;
     }
     indexesOfColors[y][x] = (byte) index;
@@ -45,7 +44,7 @@ public class PaletteRasterImage extends RasterImage {
   @Override
   protected void setPixelsColor (Color color) {
     palette.clear();
-    palette.add(color);
+    palette.add(colorCopy(color));
 
     for (int row = 0; row < height; row++) {
       for (int col = 0; col < width; col++) {
