@@ -3,7 +3,7 @@ package image.shapes;
 import image.Point;
 import javafx.scene.paint.Color;
 
-public class Ring extends Circle {
+public class Ring extends Disk {
 
   double innerRadius;
 

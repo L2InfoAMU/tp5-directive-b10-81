@@ -4,7 +4,7 @@ import image.Image;
 import image.Point;
 import image.VectorImage;
 import image.shapes.Rectangle;
-import image.shapes.Circle;
+import image.shapes.Disk;
 import image.shapes.Ring;
 import image.shapes.Shape;
 import javafx.scene.paint.Color;
@@ -30,7 +30,7 @@ public class LogoLISFactory implements ImageFactory {
     for (int i = 0; i < colors.length; i++)
       list.add(new Rectangle(xCoordinates[i], yCoordinates[i], widths[i], heights[i], colors[i]));
 
-    list.add(new Circle(new Point(430, 110), 30, Color.YELLOWGREEN));
+    list.add(new Disk(new Point(430, 110), 30, Color.YELLOWGREEN));
     list.add(new Ring(new Point(500, 110), 30, 25, Color.YELLOWGREEN));
 
     return new VectorImage(list, 860, 340);

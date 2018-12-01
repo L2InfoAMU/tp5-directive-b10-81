@@ -3,7 +3,7 @@ package image.shapes;
 import image.Point;
 import javafx.scene.paint.Color;
 
-public class Circle implements Shape {
+public class Disk implements Shape {
 
   Point center;
 
@@ -11,7 +11,7 @@ public class Circle implements Shape {
 
   Color color;
 
-  public Circle (Point center, double radius, Color color) {
+  public Disk (Point center, double radius, Color color) {
     this.center = center;
     this.radius = radius;
     this.color = color;
