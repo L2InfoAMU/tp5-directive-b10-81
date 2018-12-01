@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 
 public class Ring extends Disk {
 
-  double innerRadius;
+  private double innerRadius;
 
   public Ring (Point center, double radius, double innerRadius, Color color) {
     super(center, radius, color);

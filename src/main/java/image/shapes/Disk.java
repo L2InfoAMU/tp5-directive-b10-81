@@ -5,11 +5,11 @@ import javafx.scene.paint.Color;
 
 public class Disk implements Shape {
 
-  Point center;
+  protected Point center;
 
-  double radius;
+  private double radius;
 
-  Color color;
+  private Color color;
 
   public Disk (Point center, double radius, Color color) {
     this.center = center;
