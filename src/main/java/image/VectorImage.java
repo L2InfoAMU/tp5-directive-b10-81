@@ -13,8 +13,8 @@ public class VectorImage extends BaseImage {
   public VectorImage (List<Shape> shapes, int width, int height) {
     if (shapes.isEmpty() || width <= 0 || height <= 0) throw new IllegalArgumentException();
     this.shapes = new ArrayList<>(shapes);
-    this.width = width;
-    this.height = height;
+    setWidth(width);
+    setHeight(height);
   }
 
   @Override

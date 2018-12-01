@@ -14,8 +14,8 @@ public abstract class RasterImage extends BaseImage {
    */
   public RasterImage (Color color, int width, int height) {
     if (color == null) throw new NullPointerException();
-    this.height = height;
-    this.width = width;
+    setHeight(height);
+    setWidth(width);
     createRepresentation();
     setPixelsColor(color);
   }
@@ -30,8 +30,8 @@ public abstract class RasterImage extends BaseImage {
     Matrices.requiresNonZeroDimensions(colors);
     Matrices.requiresRectangularMatrix(colors);
 
-    this.height = Matrices.getRowCount(colors);
-    this.width = Matrices.getColumnCount(colors);
+    setHeight(Matrices.getRowCount(colors));
+    setWidth(Matrices.getColumnCount(colors));
     createRepresentation();
     setPixelsColor(colors);
   }
