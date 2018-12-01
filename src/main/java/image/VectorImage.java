@@ -11,7 +11,7 @@ public class VectorImage extends BaseImage {
   private List<Shape> shapes;
 
   public VectorImage (List<Shape> shapes, int width, int height) {
-    if (shapes.isEmpty() || width <= 0 || height <= 0) throw new IllegalArgumentException();
+    if (width <= 0 || height <= 0) throw new IllegalArgumentException();
     this.shapes = new ArrayList<>(shapes);
     setWidth(width);
     setHeight(height);
