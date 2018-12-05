@@ -3,10 +3,7 @@ package image.factory;
 import image.Image;
 import image.Point;
 import image.VectorImage;
-import image.shapes.Rectangle;
-import image.shapes.Disk;
-import image.shapes.Ring;
-import image.shapes.Shape;
+import image.shapes.*;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -26,6 +23,8 @@ public class LogoLISFactory implements ImageFactory {
     Color[] colors = {Color.WHITE, Color.WHITE, Color.WHITE, greenblue, dark, dark, dark};
 
     List<Shape> list = new ArrayList<>();
+
+    list.add(new Triangle(new Point(150, 0), new Point(210, 100), new Point(90, 100), Color.BURLYWOOD));
 
     for (int i = 0; i < colors.length; i++)
       list.add(new Rectangle(xCoordinates[i], yCoordinates[i], widths[i], heights[i], colors[i]));
