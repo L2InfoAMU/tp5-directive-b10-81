@@ -33,6 +33,7 @@ public class Triangle implements Shape {
   @Override
   public boolean contains (Point point) {
     if (boundingBox.contains(point)) {
+      // @TODO : understand these lines
       double denominator = ((b.y - c.y) * (a.x - c.x) + (c.x - b.x) * (a.y - c.y));
       double lambda = ((b.y - c.y) * (point.x - c.x) + (c.x - b.x) * (point.y - c.y)) / denominator;
       double beta = ((c.y - a.y) * (point.x - c.x) + (a.x - c.x) * (point.y - c.y)) / denominator;
