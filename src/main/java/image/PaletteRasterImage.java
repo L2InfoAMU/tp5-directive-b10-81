@@ -35,8 +35,8 @@ public class PaletteRasterImage extends RasterImage {
   public void setPixelColor (Color color, int x, int y) {
     int index = palette.indexOf(color);
     if (index == -1) {
+      index = palette.size();
       palette.add(colorCopy(color));
-      index = palette.size() -1;
     }
     indexesOfColors[y][x] = (byte) index;
   }

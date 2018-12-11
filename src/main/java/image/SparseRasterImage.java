@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class SparseRasterImage extends RasterImage {
 
-  Map<Point, Color> pixelsMap;
+  private Map<Point, Color> pixelsMap;
 
   public SparseRasterImage (Color color, int width, int height) {
     super(color, width, height);
